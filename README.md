@@ -25,6 +25,16 @@ Example:
 ![Create Task Modal](./public/screenshots/create-task-modal.png)
 ```
 
+## Live Deployment
+
+Vercel deployment:
+
+```text
+https://your-vercel-deployment-url.vercel.app
+```
+
+Replace the placeholder above with your actual production deployment link before submission.
+
 ## Tech Stack
 
 - Next.js 16 App Router
