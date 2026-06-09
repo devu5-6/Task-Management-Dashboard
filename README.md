@@ -15,25 +15,24 @@ TaskFlow Dashboard is a production-ready task management application built for t
 
 ## Application Screenshots
 
-Add product screenshots here after capturing the final UI.
+### Register Screen -
 
-Example:
+![Register Screen](./public/screenshots/register.png)
 
-```md
-![Login Screen](./public/screenshots/login.png)
-![Dashboard](./public/screenshots/dashboard.png)
-![Create Task Modal](./public/screenshots/create-task-modal.png)
-```
+### Dashboard Screen -
+
+
+![Dashboard-1](./public/screenshots/dashboard-1.png)
+![Dashboard-2](./public/screenshots/dashboard-2.png)
 
 ## Live Deployment
 
 Vercel deployment:
 
 ```text
-https://your-vercel-deployment-url.vercel.app
+https://task-management-dashboard-dusky-pi.vercel.app
 ```
 
-Replace the placeholder above with your actual production deployment link before submission.
 
 ## Tech Stack
 
