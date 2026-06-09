@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow Dashboard
+
+TaskFlow is a production-ready task management dashboard built with Next.js App Router, TypeScript, Prisma, PostgreSQL, TanStack Query, Tailwind CSS, and shadcn-style UI primitives.
+
+## Features
+
+- Secure registration, login, logout, and protected dashboard routes
+- Cookie-based JWT session handling
+- Dashboard metrics with real-time updates
+- Task CRUD, completion toggling, search, and status filters
+- Prisma-backed REST APIs with validation and ownership checks
+- ESLint and Prettier configuration for consistent code quality
+
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- TanStack Query
+- Tailwind CSS v4
+- Zod
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Copy the environment file and update it with your PostgreSQL connection string and JWT secret:
+
+```bash
+cp .env.example .env
+```
+
+3. Generate Prisma Client:
+
+```bash
+npm run prisma:generate
+```
+
+4. Run your Prisma migration against PostgreSQL:
+
+```bash
+npm run prisma:migrate
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` starts the local development server
+- `npm run build` creates a production build
+- `npm run start` starts the production server
+- `npm run lint` runs ESLint
+- `npm run format` formats the repo with Prettier
+- `npm run prisma:generate` regenerates Prisma Client
+- `npm run prisma:migrate` runs Prisma migrations in development
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+### Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tasks
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `GET /api/tasks`
+- `GET /api/tasks/:id`
+- `POST /api/tasks`
+- `PATCH /api/tasks/:id`
+- `DELETE /api/tasks/:id`
