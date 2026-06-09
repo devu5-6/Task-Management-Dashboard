@@ -175,7 +175,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                       name="name"
                       placeholder="Aarav Sharma"
                       aria-invalid={!!errors.name}
-                      className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)]"
+                      className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)] focus-visible:border-rose-100 focus-visible:ring-0"
                     />
                     {errors.name ? <p className="text-sm text-destructive">{errors.name}</p> : null}
                   </div>
@@ -191,7 +191,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                     type="email"
                     placeholder="you@company.com"
                     aria-invalid={!!errors.email}
-                    className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)]"
+                    className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)] focus-visible:border-rose-100 focus-visible:ring-0"
                   />
                   {errors.email ? <p className="text-sm text-destructive">{errors.email}</p> : null}
                 </div>
@@ -206,7 +206,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                     type="password"
                     placeholder={mode === 'login' ? 'Enter your password' : 'Minimum 8 characters'}
                     aria-invalid={!!errors.password}
-                    className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)]"
+                    className="h-9 rounded-2xl border-rose-100 bg-white/90 px-4 shadow-[0_12px_30px_-22px_rgba(244,114,182,0.45)] focus-visible:border-rose-100 focus-visible:ring-0"
                   />
                   {errors.password ? (
                     <p className="text-sm text-destructive">{errors.password}</p>

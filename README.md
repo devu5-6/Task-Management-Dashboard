@@ -1,70 +1,122 @@
 # TaskFlow Dashboard
 
-TaskFlow is a production-ready task management dashboard built with Next.js App Router, TypeScript, Prisma, PostgreSQL, TanStack Query, Tailwind CSS, and shadcn-style UI primitives.
+TaskFlow Dashboard is a production-ready task management application built for the assignment requirements. It allows users to register, log in securely, manage daily tasks, and track completion metrics from a responsive dashboard.
 
 ## Features
 
-- Secure registration, login, logout, and protected dashboard routes
-- Cookie-based JWT session handling
-- Dashboard metrics with real-time updates
-- Task CRUD, completion toggling, search, and status filters
-- Prisma-backed REST APIs with validation and ownership checks
-- ESLint and Prettier configuration for consistent code quality
+- User registration, login, logout, and protected dashboard access
+- JWT-based session handling with HTTP-only cookies
+- Dashboard metrics for total, completed, pending, and completion percentage
+- Create, edit, delete, and update task status
+- Search tasks and filter by status
+- Responsive UI built with Tailwind CSS and reusable shadcn-style components
+- Prisma + PostgreSQL persistence
+- TanStack Query for fetching, caching, optimistic updates, and invalidation
+
+## Application Screenshots
+
+Add product screenshots here after capturing the final UI.
+
+Example:
+
+```md
+![Login Screen](./public/screenshots/login.png)
+![Dashboard](./public/screenshots/dashboard.png)
+![Create Task Modal](./public/screenshots/create-task-modal.png)
+```
 
 ## Tech Stack
 
 - Next.js 16 App Router
 - React 19
 - TypeScript
-- Prisma ORM
 - PostgreSQL
+- Prisma ORM
 - TanStack Query
 - Tailwind CSS v4
 - Zod
+- ESLint
+- Prettier
 
-## Getting Started
+## Project Structure
 
-1. Install dependencies:
+```text
+src/
+|-- app/
+|-- components/
+|-- features/
+|-- hooks/
+|-- services/
+|-- lib/
+|-- types/
+`-- utils/
+```
+
+## Environment Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd task-dashboard
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-2. Copy the environment file and update it with your PostgreSQL connection string and JWT secret:
+### 3. Configure environment variables
 
-```bash
-cp .env.example .env
+Create a `.env` file in the project root.
+
+Required variables:
+
+```env
+DATABASE_URL="postgresql://USERNAME:PASSWORD@HOST:5432/DATABASE_NAME"
+JWT_SECRET="your-long-random-secret"
 ```
 
-3. Generate Prisma Client:
+Notes:
+
+- `DATABASE_URL` must point to a running PostgreSQL database.
+- `JWT_SECRET` should be a long random string.
+- For local development, `NODE_ENV` is optional because Next.js sets it automatically.
+
+### 4. Generate Prisma Client
 
 ```bash
 npm run prisma:generate
 ```
 
-4. Run your Prisma migration against PostgreSQL:
+### 5. Run database migrations
 
 ```bash
 npm run prisma:migrate
 ```
 
-5. Start the development server:
+### 6. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-## Scripts
+```text
+http://localhost:3000
+```
+
+## Available Scripts
 
 - `npm run dev` starts the local development server
-- `npm run build` creates a production build
-- `npm run start` starts the production server
+- `npm run build` creates the production build
+- `npm run start` runs the production server
 - `npm run lint` runs ESLint
-- `npm run format` formats the repo with Prettier
+- `npm run format` runs Prettier
 - `npm run prisma:generate` regenerates Prisma Client
-- `npm run prisma:migrate` runs Prisma migrations in development
+- `npm run prisma:migrate` runs Prisma development migrations
 
 ## API Endpoints
 
@@ -82,3 +134,65 @@ Open `http://localhost:3000`.
 - `POST /api/tasks`
 - `PATCH /api/tasks/:id`
 - `DELETE /api/tasks/:id`
+
+## Architecture Decisions
+
+### 1. Next.js App Router
+
+The application uses the App Router to keep routing, server rendering, layouts, and API route handlers in a single framework. This keeps the submission cohesive and production-oriented.
+
+### 2. Feature-based frontend organization
+
+Feature-specific UI is grouped under `src/features`, while shared building blocks live in `src/components`. This keeps dashboard-specific code separated from auth-specific code and improves maintainability.
+
+### 3. JWT authentication with HTTP-only cookies
+
+Authentication uses signed JWTs stored in HTTP-only cookies rather than localStorage. This improves security for session handling and supports protected routes through server-side checks.
+
+### 4. Route protection in two layers
+
+Protected access is handled both:
+
+- at the routing level through `proxy.ts`
+- at the server/page level through auth helpers such as `requireUser`
+
+This reduces the chance of accidental exposure.
+
+### 5. Prisma as the data access layer
+
+Prisma was chosen for type-safe database access, schema management, and cleaner service-layer implementation. The task schema now enforces a database enum for `status` and a non-null `description`, which better matches the assignment contract.
+
+### 6. TanStack Query for task state
+
+TanStack Query is used for:
+
+- server data fetching
+- client-side caching
+- optimistic updates
+- error handling
+- cache invalidation after mutations
+
+This keeps task interactions responsive without duplicating server state manually across components.
+
+### 7. Validation at the API boundary
+
+Zod schemas validate auth and task payloads before they reach business logic. This keeps route handlers predictable and ensures meaningful error messages for invalid input.
+
+## Assumptions Made
+
+- Search and status filtering are supported in the product, with the current UX focused on a responsive dashboard experience rather than advanced query-builder behavior.
+- The project assumes PostgreSQL is available locally or via a reachable connection string at runtime.
+
+## Verification
+
+The project has been verified with:
+
+```bash
+npm run lint
+npm run build
+```
+
+## Submission Notes
+
+- Complete source code is included in the repository.
+- The app follows the requested stack and project structure.

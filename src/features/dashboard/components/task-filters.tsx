@@ -35,13 +35,13 @@ export function TaskFilters({
             value={search}
             onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search by title or description"
-            className="h-11 rounded-2xl border-rose-100 bg-white pl-9 shadow-sm"
+            className="h-11 rounded-2xl border-rose-100 bg-white pl-9 shadow-sm focus-visible:border-rose-100 focus-visible:ring-0"
           />
         </div>
         <select
           value={status}
           onChange={(event) => onStatusChange(event.target.value as TaskFilterStatus)}
-          className="h-11 rounded-2xl border border-rose-100 bg-white px-4 text-sm shadow-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="h-11 rounded-2xl border border-rose-100 bg-white px-4 text-sm shadow-sm outline-none focus-visible:border-rose-100 focus-visible:ring-0"
         >
           <option value="all">All statuses</option>
           <option value="pending">Pending</option>

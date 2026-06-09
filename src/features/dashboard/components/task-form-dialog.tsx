@@ -125,6 +125,7 @@ function TaskFormDialogContent({
             onChange={(event) => setValues((current) => ({ ...current, title: event.target.value }))}
             aria-invalid={!!errors.title}
             placeholder="Prepare sprint planning notes"
+            className="focus-visible:border-input focus-visible:ring-0"
           />
           {errors.title ? <p className="text-sm text-destructive">{errors.title}</p> : null}
         </div>
@@ -141,6 +142,7 @@ function TaskFormDialogContent({
             }
             aria-invalid={!!errors.description}
             placeholder="Add any context, blockers, or important follow-up details"
+            className="focus-visible:border-input focus-visible:ring-0"
           />
           {errors.description ? (
             <p className="text-sm text-destructive">{errors.description}</p>
@@ -158,6 +160,7 @@ function TaskFormDialogContent({
               value={values.dueDate}
               onChange={(event) => setValues((current) => ({ ...current, dueDate: event.target.value }))}
               aria-invalid={!!errors.dueDate}
+              className="focus-visible:border-input focus-visible:ring-0"
             />
             {errors.dueDate ? <p className="text-sm text-destructive">{errors.dueDate}</p> : null}
           </div>
@@ -175,7 +178,7 @@ function TaskFormDialogContent({
                   status: event.target.value as TaskFormValues['status'],
                 }))
               }
-              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30"
+              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-input focus-visible:ring-0 dark:bg-input/30"
             >
               <option value="pending">Pending</option>
               <option value="completed">Completed</option>
